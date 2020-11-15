@@ -1,0 +1,10 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rake
+
+AllCops:
+  NewCops: enable
+
+Documentation:
+  Enabled: false
