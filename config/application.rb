@@ -3,6 +3,7 @@
 require_relative 'boot'
 
 require 'dry/system/container'
+require 'dry/auto_inject'
 
 module Loot
   class Application < Dry::System::Container
@@ -15,4 +16,6 @@ module Loot
 
     load_paths!('lib')
   end
+
+  Import = Dry::AutoInject(Application)
 end

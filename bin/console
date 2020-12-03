@@ -8,4 +8,10 @@ Loot::Application.finalize!
 require 'pry'
 require 'pry-byebug'
 
+def scenario
+  data = JSON.parse(File.read('/home/alex/Downloads/message.txt'))
+
+  Loot::Attribution::Imports::RcLootCouncilImporter.new.from_json(data)
+end
+
 Pry.start

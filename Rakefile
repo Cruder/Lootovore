@@ -12,3 +12,14 @@ namespace :db do
     config.gateways[:default].use_logger(Logger.new($stdout))
   end
 end
+
+namespace :loots do
+  desc 'load all loots into the database'
+  task :import, [:filename] do |_t, args|
+    Loot::Application.finalize!
+
+    data = JSON.parse(File.read(args[:filename]))
+
+    Loot::Attribution::Imports::RcLootCouncilImporter.new.from_json(data)
+  end
+end
