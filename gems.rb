@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.7.1'
+ruby '2.7.2'
 
 # DRY-RB
 gem 'dry-auto_inject', '= 0.7.0'
