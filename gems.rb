@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 ruby '2.7.2'
 
-
 # DRY-RB
 gem 'dry-auto_inject', '= 0.7.0'
 gem 'dry-monads', '~> 1.3'
@@ -25,6 +24,11 @@ gem 'hanami-controller', '~> 1.3'
 gem 'hanami-router', '~> 1.3'
 gem 'puma', '~> 5.0'
 gem 'rack-cors', '~> 1.1'
+
+# Deployment
+gem 'capistrano', '~> 3.14'
+gem 'capistrano3-puma', '~> 5.0', github: "seuros/capistrano-puma"
+gem 'capistrano-asdf', '= 0.0.3'
 
 group :development do
   gem 'rubocop', '~> 1.3', require: false

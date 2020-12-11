@@ -10,6 +10,10 @@ module Loot
           belongs_to :wishes, as: :wish
         end
       end
+
+      def sorted_by_date
+        order { date.desc }
+      end
     end
   end
 end

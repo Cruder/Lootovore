@@ -15,7 +15,10 @@ module Loot
                  }
                }
       def all
-        loots.combine(:character, :equipment, :wish).to_a
+        loots
+          .combine(:character, :equipment, :wish)
+          .sorted_by_date
+          .to_a
       end
 
       def create_many(raw_loots)
