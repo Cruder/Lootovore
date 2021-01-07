@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'pry'
+require 'pry-byebug'
+
 module Loot
   module Web
     module Serializers
@@ -19,27 +22,24 @@ module Loot
             klass: character.klass,
             icon: character.icon,
             loot_count: loot_count(character),
-            loots: character.loots.map { |loot| loot_serializer.serialize(loot) }
-          }.merge(loots_data(character))
-        end
-
-        def loots_data(character)
-          data = character.loots.first ? loot_serializer.serialize(character.loots.first) : nil
-
-          {
-            last_loot: data
+            loots: loots(character)
           }
         end
 
+        def loots(character)
+          character
+            .loots
+            .select { |loot| loot.wish.rank <= 2 }
+            .map { |loot| loot_serializer.serialize(loot) }
+        end
+
         def loot_count(character)
-          {
-            1 => 0,
-            2 => 0,
-            3 => 0,
-            4 => 0,
-            5 => 0,
-            6 => 0
-          }.merge(character.loots.group_by { |loot| loot.wish.rank }.transform_values(&:size))
+          character
+            .loots
+            .group_by { |loot| loot.wish.rank - 1 }
+            .transform_values(&:size)
+            .each_with_object(Array.new(6)) { |(k, v), acc| acc[k] = v }
+            .map { |v| v || 0 }
         end
       end
     end

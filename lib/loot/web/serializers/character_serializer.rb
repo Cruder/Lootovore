@@ -11,18 +11,30 @@ module Loot
             id: character.id,
             name: character.name,
             klass: character.klass,
-            icon: character.icon
-          }.merge(loots_data(character))
+            icon: character.icon,
+            loot_count: loot_count(character),
+            loots: loots(character)
+          }
         end
 
         private
 
-        def loots_data(character)
-          loots = character.loots.map { |loot| loot_serializer.serialize(loot) }
+        def loots(character)
+          character
+            .loots
+            .sort_by { |loot| loot.wish.rank }
+            .group_by { |loot| loot.wish.name }
+            .transform_values { |loots| loots.sort_by(&:date).reverse }
+            .transform_values { |loots| loots.map { |loot| loot_serializer.serialize(loot) } }
+        end
 
-          {
-            loots: loots
-          }
+        def loot_count(character)
+          character
+            .loots
+            .group_by { |loot| loot.wish.rank - 1 }
+            .transform_values(&:size)
+            .each_with_object(Array.new(6)) { |(k, v), acc| acc[k] = v }
+            .map { |v| v || 0 }
         end
       end
     end

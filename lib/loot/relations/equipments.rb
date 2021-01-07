@@ -8,6 +8,11 @@ module Loot
           has_many :loots
         end
       end
+
+      def with_loot_and_character
+        combine(loots: [:wish, :character])
+          .node(:loots) { |equipment_loots| equipment_loots.order { date.desc } }
+      end
     end
   end
 end

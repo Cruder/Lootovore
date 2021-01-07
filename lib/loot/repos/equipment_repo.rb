@@ -15,8 +15,8 @@ module Loot
                  }
                }
 
-      def all
-        equipments.to_a
+      def by_id(id)
+        equipments.where(id: id).with_loot_and_character.one!
       end
 
       def upsert_many(raw_equipments)

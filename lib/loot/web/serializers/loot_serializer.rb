@@ -15,7 +15,7 @@ module Loot
           {
             wish: loot.wish.name,
             wish_rank: loot.wish.rank,
-            date: loot.date,
+            date: loot.date.iso8601,
             nb_vote: loot.nb_vote
           }.merge(
             character_data(loot),

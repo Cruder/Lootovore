@@ -16,7 +16,7 @@ module Loot
                }
 
       def all
-        equipments.to_a
+        wishes.to_a
       end
 
       def upsert_many(raw_equipments)
