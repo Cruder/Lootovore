@@ -4,10 +4,10 @@ module Loot
   module Attribution
     module Imports
       class RcLootCouncilImporter
-        include Import['repos.loot_repo']
-        include Import['repos.character_repo']
-        include Import['repos.wish_repo']
-        include Import['repos.equipment_repo']
+        include Assistant::Import['repos.loot_repo']
+        include Assistant::Import['repos.character_repo']
+        include Assistant::Import['repos.wish_repo']
+        include Assistant::Import['repos.equipment_repo']
 
         # Data format
         # {

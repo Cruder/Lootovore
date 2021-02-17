@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Loot::Application.boot(:db) do
+Assistant::Application.boot(:db) do
   init do
     require 'rom'
     require 'rom-sql'

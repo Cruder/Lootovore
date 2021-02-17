@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Loot::Application.boot(:web) do |_app|
+Assistant::Application.boot(:web) do |_app|
   init do
     require 'hanami-router'
     require 'hanami-controller'

@@ -5,10 +5,11 @@ source 'https://rubygems.org'
 ruby '2.7.2'
 
 # DRY-RB
-gem 'dry-auto_inject', '= 0.7.0'
+gem 'dry-auto_inject'
 gem 'dry-monads', '~> 1.3'
-gem 'dry-system', '= 0.18.1'
-gem 'dry-validation', '~> 1.5'
+gem 'dry-monitor'
+gem 'dry-system', git: 'https://github.com/dry-rb/dry-system', branch: :master
+gem 'dry-validation', '~> 1.6'
 
 # Database
 gem 'pg', '~> 1.2'

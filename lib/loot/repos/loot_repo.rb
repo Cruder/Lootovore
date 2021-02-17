@@ -5,7 +5,7 @@ module Loot
     class LootRepo < ROM::Repository[:loots]
       struct_namespace ::Loot::Entities
 
-      include Import['container']
+      include Assistant::Import['container']
 
       commands :create,
                use: :timestamps,
