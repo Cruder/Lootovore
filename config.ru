@@ -2,6 +2,8 @@
 
 require_relative 'config/application'
 
-Loot::Application.finalize!
+Assistant::Application.finalize!
+Assistant::Application.require_from_root("lib/loot/**/*.rb")
+Assistant::Application.require_from_root("apps/web/**/*.rb")
 
-run Loot::Web.app
+run Web.app

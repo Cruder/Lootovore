@@ -7,8 +7,8 @@ require 'rom/sql/rake_task'
 namespace :db do
   desc ''
   task :setup do
-    Loot::Application.start(:db)
-    config = Loot::Application['db.config']
+    Assistant::Application.start(:db)
+    config = Assistant::Application['db.config']
     config.gateways[:default].use_logger(Logger.new($stdout))
   end
 end
@@ -16,7 +16,7 @@ end
 namespace :loots do
   desc 'load all loots into the database'
   task :import, [:filename] do |_t, args|
-    Loot::Application.finalize!
+    Assistant::finalize_application!
 
     data = JSON.parse(File.read(args[:filename]))
 

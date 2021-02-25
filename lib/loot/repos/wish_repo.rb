@@ -5,7 +5,7 @@ module Loot
     class WishRepo < ROM::Repository[:wishes]
       struct_namespace ::Loot::Entities
 
-      include Import['container']
+      include Assistant::Import['container']
 
       commands :create,
                use: :timestamps,

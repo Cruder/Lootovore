@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Loot::Application.boot(:core) do
+Assistant::Application.boot(:core) do
   init do
     require 'dry-validation'
     require 'dry/monads'
